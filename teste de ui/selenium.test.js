@@ -14,10 +14,12 @@ const iniciarTeste = async () => {
         hrefs.push(url);
     }
     console .log(hrefs);
-    for (var href of hrefs){
-        await driver.get(href);
+    for (var url of hrefs){
+        await driver.get(url);
+        const descricao = await driver.findElement(By.css('div.max-w-3xl')).getText();
+        console.log(descricao);
     }
 await driver.close();
 }
 
-iniciarTeste();
+iniciarTeste()
