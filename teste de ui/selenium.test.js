@@ -7,8 +7,15 @@ const iniciarTeste = async () => {
     const urls = await driver.findElements(By.css('li a'));
     console.log (urls.length);
      
+    const hrefs = [];
+
     for(var elementos of urls){
-        console.log(elementos)
+        var url = await elementos.getAttribute('href');
+        hrefs.push(url);
+    }
+    console .log(hrefs);
+    for (var href of hrefs){
+        await driver.get(href);
     }
 await driver.close();
 }
